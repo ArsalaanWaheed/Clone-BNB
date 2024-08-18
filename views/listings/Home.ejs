@@ -1,0 +1,37 @@
+<%layout("/layout/boilerplate")%>
+
+<body>
+
+<div class="container">
+  
+   
+  <h1 class="mt-4"><b>ALL LISTINGS</b></h1>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">   
+    
+
+  <%for(list of alllistings){%>
+    
+      <a href="http://localhost:8080/listings/<%=list._id%>" >
+  <div class="card col" style="width: 28vmax; height:30rem; border:0">
+      <img src=<%=list.image.url%> class="card-img-top " style="width: 25rem;height:20rem; "alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%=list.title%></h5>
+        <!-- <p class="card-text"><%=list.description%>></p> -->
+        <h5 class="card-title">&#x20b9;<%=list.price.toLocaleString("en-IN")%>
+          <span class="tax" style="display: none;"><i>+18%GST</i></span>
+        </h5>
+        <h5 class="card-title"><%=list.location%>,<%=list.country%></h5>
+      </div>
+      </div>
+        </a>
+
+  
+    
+
+    <%}%>
+
+
+  </div>
+</div>
+
+</body>

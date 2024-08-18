@@ -1,0 +1,46 @@
+<%layout("./layout/boilerplate.ejs");%>
+<body>
+    <h1 class="offset-2">Create New Listing</h1>
+ <div class="row">   
+    <div class="col-8 offset-2">
+    <form method="post" action="http://localhost:8080/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+       <div > 
+        <label for="title" class="form-label">Title</label>
+    <input type="text" name="title" placeholder="Title" class="form-control" required>
+    <div class="valid-feedback">Good Title</div>
+</div>
+<div >
+    <label for="description" class="form-label">Description</label>
+    <input type="text" name="description" placeholder="description" class="form-control" required>
+</div>
+<div >
+    <label for="image" class="form-label">Image Url</label>
+    <input type="file" name="image" placeholder="Image url"class="form-control" required>
+</div>
+<div >
+    <label for="price" class="form-label">Price</label>
+    <input  name="price" placeholder="Price"class="form-control" required >
+    <div class="invalid-feedback">Enter a valid price</div>
+</div>
+<div class="row">
+    <div  class="col-md-6">
+        <label for="loaction" class="form-label ">Location</label>
+    <input type="text" name="location" placeholder="location" class="form-control" required>
+</div>
+<div class="col-md-6">
+    <label for="country" class="form-label ">Country</label>
+    <input type="text" name="country" placeholder="country" class="form-control" required >
+</div>
+</div>
+
+<br>
+<br>
+
+    <button class="btn btn-danger">Submit</button>
+<br>
+<br>
+    </form>
+</div>
+</div>
+
+</body>

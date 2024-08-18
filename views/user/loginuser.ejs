@@ -1,0 +1,31 @@
+<% layout("./layout/boilerplate.ejs")%>
+
+<body>
+
+<div class="row mt-5">
+   
+<div class=" card col-4 offset-4 mt-3" style="height:60vh;">
+    <br>
+    <h1>Login</h1><br>
+    <form method="Post" action="http://localhost:8080/user/login" noValidate class="needs-validation">
+       
+        <div class="div">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" type="text" placeholder="Username" class="form-control" required>
+        </div>
+        <br>
+        
+        <div class="div">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" placeholder="Enter New Password" class="form-control"required>
+        </div>
+        <br>
+        <button class="btn btn-success offset-4">Login</button>
+    </form>
+</div>
+
+</div>
+
+
+
+</body>

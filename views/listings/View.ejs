@@ -1,0 +1,106 @@
+<% layout("./layout/boilerplate.ejs");%>
+<body>
+
+ <div class="row">
+    <div class="col-8 offset-2">
+
+ 
+    <div class="card" style="border:0;" >
+        <h1 class="card-title"><%=sltlist.title%></h1>
+        <h4 class="card-title">Owned By:<%=sltlist.owner.username%></h4>
+        <img src=<%=sltlist.image.url%> class="card-img-top" style="height:20rem; width:45vw;" >
+        <div class="card-body">
+          
+          <p class="card-text"><%=sltlist.description%></p>
+    <h4>Price:&#x20b9;<%=sltlist.price.toLocaleString("en-In")%>/Day</h4>
+    <h4>Location:<%=sltlist.location%>,<%=sltlist.country%></h4>
+    
+   <% if(sessionuser && sltlist.owner._id.equals(sessionuser._id)){%>
+    <div class="row ">
+   <div class="col-md-2 col-lg-1 "> <a href="http://localhost:8080/listings/<%=sltlist._id%>/edit"><button class="btn btn-secondary">Edit</button></a></div>
+    <div class="col-md-6 mt-3 mt-md-0">  <form method="post" action="/listings/<%=sltlist._id%>?_method=DELETE"><button class="btn btn-danger">Delete</button></form></div>
+</div>
+
+<%}%>
+        </div>
+      </div>
+    </div>
+    </div>
+<hr>
+<%if(loginstatus){%>
+    <div class="row mb-3 offset-2">
+        <div class="col-8">
+            
+     <h4>Review</h4>
+            
+     <form method="post" action="http://localhost:8080/listings/<%=sltlist.id%>/reviews" noValidate class="needs-validation">
+        <div>
+                <label class="form-label" for="comment">Comment</label>
+        <input class="form-control" name="comment" type="text" placeholder="Write your Review" required>
+        <div class="valid-feedback">Cool</div>
+    </div>
+    <div>
+
+           
+       
+         <label for="rating" class="form-label">Rating</label>
+        <fieldset class="starability-growRotate">
+            
+            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+          
+    </div>
+
+     <button class="btn btn-primary mt-3 offset-4">Submit</button>
+     </form>
+<%}%>
+    
+    
+   
+    <hr>
+
+    <h1>All Reviews</h1>
+   <% let rating=[];
+    let avgrating=0;%>
+<div class="row " >
+    
+    
+   <% for(review of sltlist.reviews){
+       rating.push(review.rating)%>
+       <div class="card col-5 ms-5">
+        <h5 class="card-title"><%=review.author.username%></h5>
+  <p class="starability-result" data-rating="<%=review.rating%>">
+  </p>
+            
+       <p class="card-text"><%=review.comment%></p>
+     <%  if(sessionuser && sessionuser._id.equals(review.author._id)){%>
+
+       <form method="post" action="/listings/<%=sltlist._id%>/reviews/<%=review._id%>?_method=DELETE"><button class="btn btn-secondary mb-2">Delete</button></form>
+
+        <%}%>
+        </div>
+    <%}%>
+
+</div>
+<br>
+<br>
+
+<%for(let i=0;i<rating.length;i++){
+   
+   avgrating=avgrating+rating[i]/rating.length
+
+}%>
+<h4>Average Rating:<%=avgrating%></h4>
+</div>
+</div>
+</body>

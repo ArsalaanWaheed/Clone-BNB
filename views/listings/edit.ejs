@@ -1,0 +1,42 @@
+<%layout("./layout/boilerplate.ejs");%>
+<body>
+   
+    <h1 class="offset-2">Edit Your Details</h1>
+    <div class="edit row">
+        <div class="col-8 offset-2">
+
+    <div class="form"><form method="post" action="http://localhost:8080/listings/<%=editlist._id%>?_method=PATCH" novalidate class="needs-validation"
+      enctype="multipart/form-data">
+       <div class="div">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" placeholder="Title" required value=<%=editlist.title%> class="form-control">
+       </div>
+       <div><label for="description" class="form-label">Description</label>
+        <textarea type="text" name="description" placeholder="description" class="form-control" required><%=editlist.description%></textarea>
+    </div>
+     <div>
+        <label for="image" class="form-label">Image</label><br>
+        <img src=<%=previewImageUrl%> style="height:10vw ;width:20vw; border-radius:5px">
+        <input type="file" name="image" placeholder="Image url"  class="form-control mt-2" >
+     </div>
+   <div>
+    <label for="price" class="form-label">Price</label>
+    <input type="number" name="price" placeholder="Price" class="form-control" required value=<%=editlist.price%>>
+   </div>
+   <div class="row">
+      <div class="col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="location"  class="form-control" required value=<%=editlist.location%>>
+      </div>
+      <div class="col-md-6">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" name="country" placeholder="country" class="form-control" required value=<%=editlist.country%>>
+      </div>
+    </div>
+        <button class="btn btn-danger mt-5 offset-5">Submit</button>
+    </div>
+</div>
+</div>
+
+
+</body>

@@ -1,0 +1,35 @@
+<% layout("./layout/boilerplate.ejs")%>
+
+
+<body>
+
+<div class="row mt-5">
+    <h1 class="offset-3" >SignUp</h1>
+<div class="col-6 offset-3 mt-3">
+    <form method="Post" action="http://localhost:8080/user/signUp" noValidate class="needs-validation">
+        <div class="div">
+            <label for="email" class="form-label">Email</label>
+            <input name="email" type="text" placeholder="Enter Valid Email" class="form-control" required>
+        </div>
+        <div class="div">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" type="text" placeholder="Username" class="form-control" required>
+        </div>
+        <div class="div">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" placeholder="Enter New Password" class="form-control"required>
+        </div>
+        <br>
+        <button class="btn btn-danger">Submit</button>
+    </form>
+</div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+
+
+
+</body>

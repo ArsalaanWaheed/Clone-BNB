@@ -1,0 +1,72 @@
+<style>
+.mobsearch{
+  display:none;
+  
+}
+
+@media(max-width:600px){
+ .mobsearch{
+  display: block;
+
+ }
+ .lapsearch{
+  display:none;
+ }
+}
+
+</style>
+
+<nav class="navbar nav navbar-expand-lg bg-body-tertiary border-bottom sticky-top" >
+
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <i class="fa-regular fa-compass"></i>
+      <div class="form-check form-switch form-check-reverse darkbtn">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheck">
+        <label class="form-check-label" for="flexSwitchCheck"><i>Show Tax</i></label>
+      </div>
+      <div class="navbar-nav ms-auto mobsearch">
+        <form class="d-flex" role="search"  action="/listings/search">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search" style="border-radius: 25px;">
+          <button class="btn btn-danger" type="submit" style="border-radius: 25px;">Search</button>
+        </form>
+    </div>
+    
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/listings">Home</a>
+     
+        
+         
+         
+      
+        </div>
+        <div class="navbar-nav ms-auto labsearch">
+          <form class="d-flex" role="search"  action="/listings/search">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search" style="border-radius: 25px;">
+          <button class="btn btn-danger" type="submit" style="border-radius: 25px;">Search</button>
+        </form>
+      </div>
+        <div class="mt-auto navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Air Your BNB</a>
+          <% if(!loginstatus){%>
+            <a class="nav-link" href="/user/login"><b>Login</b></a>
+            <a class="nav-link" href="/user/signUp"><b>SignUp</b></a>
+            <% }%>
+            
+          
+          <% if(loginstatus){%>
+          <a class="nav-link" href="/user/logout">Logout</a>
+          <a class="nav-link" href="/listings/new"><%=sessionuser.username%></a>
+        <% }%>
+      
+      </div>
+      </div>
+  
+    </div>
+   
+  </nav>
